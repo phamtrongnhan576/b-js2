@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bài Tập Hàm</title>
+        <!-- Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Icon -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+            integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <!-- CSS -->
+        <link href="./css/output.css" rel="stylesheet" />
+    </head>
+    <body class="bg-gray-100 min-h-screen flex items-center">
+        <div class="w-[1000px] mx-auto py-8">
+            <div
+                class="flex flex-wrap h-[570px] bg-white shadow-lg rounded-lg border border-gray-200"
+            >
+                <!-- Sidebar Tabs -->
+                <div class="w-full md:w-1/4 p-4 bg-gray-50 border-r">
+                    <ul
+                        class="text-sm font-medium"
+                        id="vertical-tab"
+                        data-tabs-toggle="#vertical-tab-content"
+                        role="tablist"
+                    >
+                        <li class="mb-2">
+                            <button
+                                class="w-full p-3 bg-gray-100 hover:bg-blue-100 hover:text-blue-600 hover:bg-blue-300 font-medium rounded-lg btn-tabs active"
+                                id="tab-1"
+                                data-tabs-target="#bai1"
+                                type="button"
+                                role="tab"
+                                aria-controls="bai1"
+                                aria-selected="true"
+                            >
+                                Bài 1
+                            </button>
+                        </li>
+                        <li class="mb-2">
+                            <button
+                                class="w-full p-3 bg-gray-100 hover:bg-blue-100 hover:text-blue-600 hover:bg-blue-300 rounded-lg btn-tabs"
+                                id="tab-2"
+                                data-tabs-target="#bai2"
+                                type="button"
+                                role="tab"
+                                aria-controls="bai2"
+                                aria-selected="false"
+                            >
+                                Bài 2
+                            </button>
+                        </li>
+                        <li class="mb-2">
+                            <button
+                                class="w-full p-3 bg-gray-100 hover:bg-blue-100 hover:text-blue-600 hover:bg-blue-300 rounded-lg btn-tabs"
+                                id="tab-3"
+                                data-tabs-target="#bai3"
+                                type="button"
+                                role="tab"
+                                aria-controls="bai3"
+                                aria-selected="false"
+                            >
+                                Bài 3
+                            </button>
+                        </li>
+                        <li class="mb-2">
+                            <button
+                                class="w-full p-3 bg-gray-100 hover:bg-blue-100 hover:text-blue-600 hover:bg-blue-300 rounded-lg btn-tabs"
+                                id="tab-4"
+                                data-tabs-target="#bai4"
+                                type="button"
+                                role="tab"
+                                aria-controls="bai4"
+                                aria-selected="false"
+                            >
+                                Bài 4
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Content Tabs -->
+                <div
+                    class="w-full md:w-3/4 p-6 h-full overflow-auto"
+                    id="vertical-tab-content"
+                >
+                    <!-- Bài 1 -->
+                    <div id="bai1" role="tabpanel" aria-labelledby="tab-1">
+                        <h2 class="text-2xl font-semibold mb-4 text-gray-800">
+                            🏫 Quản lý tuyển sinh
+                        </h2>
+                        <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                            <h3 class="text-blue-700 font-bold">💡 Gợi ý:</h3>
+                            <ul class="list-disc ml-4 text-gray-600">
+                                <li>
+                                    Điểm chuẩn của hội đồng các bạn tự nhập
+                                    thêm. Điểm chuẩn của 3 môn thường tối đa
+                                    30đ.
+                                </li>
+                                <li>
+                                    Nếu không thuộc khu vực hoặc đối tượng trong
+                                    danh sách thì điểm khu vực và điểm đối tượng
+                                    sẽ là 0
+                                </li>
+                                <li>
+                                    Nếu có 1 trong 3 môn bị điểm 0 thì lặp tức
+                                    cho rớt không cần kiểm tra tổng điểm có lớn
+                                    hơn hoặc bằng điểm chuẩn hay không
+                                </li>
+                            </ul>
+                        </div>
+                        <form class="flex flex-col gap-4">
+                            <div class="grid grid-cols-3 gap-[30px]">
+                                <input
+                                    type="number"
+                                    placeholder="Điểm Chuẩn"
+                                    class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 border-[#E5E7EB]"
+                                    id="benchmark"
+                                />
+                                <select
+                                    class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 border-[#E5E7EB]"
+                                    name=""
+                                    id="selLocation"
+                                >
+                                    <option value="0">Chọn khu vực</option>
+                                    <option value="2">A</option>
+                                    <option value="1">B</option>
+                                    <option value="0.5">C</option>
+                                </select>
+
+                                <select
+                                    class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 border-[#E5E7EB]"
+                                    name=""
+                                    id="selUser"
+                                >
+                                    <option value="0">Chọn Đối Tượng</option>
+                                    <option value="2.5">1</option>
+                                    <option value="1.5">2</option>
+                                    <option value="1">3</option>
+                                </select>
+                                <input
+                                    type="number"
+                                    placeholder="Điểm Môn Thứ Nhất"
+                                    class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 border-[#E5E7EB]"
+                                    id="score-1"
+                                />
+
+                                <input
+                                    type="number"
+                                    placeholder="Điểm Môn Thứ Hai"
+                                    class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 border-[#E5E7EB]"
+                                    id="score-2"
+                                />
+                                <input
+                                    type="number"
+                                    placeholder="Điểm Môn Thứ Ba"
+                                    class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 border-[#E5E7EB]"
+                                    id="score-3"
+                                />
+                            </div>
+                            <button
+                                type="button"
+                                class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700"
+                                id="btnResult"
+                            >
+                                Tính Điểm
+                            </button>
+                        </form>
+                        <div
+                            class="p-4 mt-4 text-sm rounded-lg bg-green-100 flex items-center gap-[5px] border-green-200 border"
+                            alert
+                            role="alert"
+                        >
+                            <span class="mb-1">👉</span>
+                            <span class="font-bold" id="txtResult"></span>
+                        </div>
+                    </div>
+
+                    <!-- Bài 2 -->
+                    <div
+                        id="bai2"
+                        class="hidden"
+                        role="tabpanel"
+                        aria-labelledby="tab-2"
+                    >
+                        <h2 class="text-2xl font-semibold mb-4 text-gray-800">
+                            🔋 Tính tiền điện
+                        </h2>
+                        <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                            <h3 class="text-blue-700 font-bold">💡 Gợi ý:</h3>
+                            <img src="./img/Bai2.JPG" class="mt-3" alt="" />
+                        </div>
+                        <form class="flex flex-col gap-4">
+                            <input
+                                type="text"
+                                placeholder="Nhập Họ Và Tên"
+                                class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 form-input border-[#E5E7EB]"
+                                id="name"
+                            />
+                            <input
+                                type="text"
+                                placeholder="Nhập Số KW"
+                                class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 form-input border-[#E5E7EB]"
+                                id="kw"
+                            />
+
+                            <button
+                                type="button"
+                                class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700"
+                                id="btnElecBill"
+                            >
+                                Tính Tiền Điện
+                            </button>
+                        </form>
+                        <div
+                            class="p-4 mt-4 text-sm rounded-lg bg-green-100 flex items-center gap-[5px] border-green-200 border"
+                            alert
+                            role="alert"
+                        >
+                            <span class="mb-1">👉</span>
+                            <span class="font-bold" id="txtElecBill"></span>
+                        </div>
+                    </div>
+
+                    <!-- Bài 3 -->
+                    <div
+                        id="bai3"
+                        class="hidden h-full w-full"
+                        role="tabpanel"
+                        aria-labelledby="tab-3"
+                    >
+                        <h2 class="text-2xl font-semibold mb-4 text-gray-800">
+                            💰 Tính thuế thu nhập cá nhân
+                        </h2>
+                        <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                            <h3 class="text-blue-700 font-bold">💡 Gợi ý:</h3>
+                            <ul class="list-disc ml-4 text-gray-600">
+                                <li>
+                                    Tổng thu nhập năm các bạn tự nhập thêm. Giả
+                                    sử 1 tháng thu nhập 10tr thì 1 năm sẽ là 10
+                                    x 12 = 120tr =&gt; các bạn sẽ nhập 120000000
+                                </li>
+                                <li>
+                                    Demo hiện tại đang tính % thuế theo điều
+                                    kiện mà thu nhập chịu thuế rơi vào. Vd: thu
+                                    nhập chịu thuế là 110tr thì tính 10% của
+                                    110tr =&gt; 110tr * 0.1
+                                </li>
+                                <li>
+                                    Do đề bài không ghi rõ yêu cầu tính thuế nên
+                                    cũng có thể tính theo cách chia ra từng đoạn
+                                    thuế giống bài tính tiền grab. Vd: 110tr
+                                    =&gt; 60tr *0.05 + (110tr-60tr) * 0.1
+                                </li>
+                                <li>
+                                    Sử dụng input có type number thì khi nhập
+                                    120000000, có thể nhập ngắn gọn thành 120e+6
+                                </li>
+                                <li>
+                                    Đối với các con số hàng triệu có nhiều số 0,
+                                    có thể viết ngắn gọn trong code như sau:<br />
+                                    4tr =&gt; 4000000 =&gt; 4e+6
+                                </li>
+                                <li>
+                                    Dùng NumberFormat để số tiền hiển thị đẹp
+                                    hơn:
+                                    <a
+                                        href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat"
+                                        target="_blank"
+                                        >NumberFormat</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <form class="flex flex-col gap-[20px]">
+                            <div class="grid grid-cols-2 gap-[25px]">
+                                <input
+                                    type="text"
+                                    placeholder="Nhập Họ Và Tên"
+                                    class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 form-input border-[#E5E7EB]"
+                                    id="name2"
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Số Người Phụ Thuộc"
+                                    class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 form-input border-[#E5E7EB]"
+                                    id="dependent"
+                                />
+                                <input
+                                    type="number"
+                                    placeholder="Tổng Thu Nhập Một Năm"
+                                    class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 form-input border-[#E5E7EB]"
+                                    id="salary"
+                                />
+                            </div>
+
+                            <button
+                                type="button"
+                                class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700"
+                                id="btnTax"
+                            >
+                                Tính Tiền Thuế
+                            </button>
+                        </form>
+                        <div
+                            class="p-4 mt-4 text-sm rounded-lg bg-green-100 flex items-center gap-[5px] border-green-200 border"
+                            alert
+                            role="alert"
+                        >
+                            <span class="mb-1">👉</span>
+                            <span class="font-bold" id="txtTax"></span>
+                        </div>
+                    </div>
+
+                    <!-- Bài 4 -->
+                    <div
+                        id="bai4"
+                        class="hidden"
+                        role="tabpanel"
+                        aria-labelledby="tab-4"
+                    >
+                        <h2 class="text-2xl font-semibold mb-4 text-gray-800">
+                            🕸️ Tính tiền cáp
+                        </h2>
+                        <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                            <h3 class="text-blue-700 font-bold">💡 Gợi ý:</h3>
+                            <ul class="list-disc ml-4 text-gray-600">
+                                <ul>
+                                    <li>
+                                        Sử dụng event onchange của dropdown để
+                                        xử lý ẩn hiện cho ô nhập số kết nối khi
+                                        chọn loại khách hàng:
+                                        <a
+                                            href="https://www.w3schools.com/jsref/event_onchange.asp"
+                                            target="_blank"
+                                            >Onchange</a
+                                        >
+                                    </li>
+                                    <li>
+                                        Đối với loại khách hàng Doanh Nghiệp,
+                                        tổng 10 kết nối đầu là 75$ <br />
+                                        =&gt; đây là giá trọn gói, nếu doanh
+                                        nghiệp lắp đặt số kết nối nhỏ hơn 10 thì
+                                        vẫn phải đóng 75$.<br />
+                                        Vd: 6 kết nối thì vẫn sẽ cộng 75$ vào
+                                        tổng tiền.<br />
+                                        =&gt; Nếu lắp trên 10 kết nối thì kết
+                                        nối thứ 11 trở đi sẽ tính 5$/kết nối.
+                                    </li>
+                                </ul>
+                            </ul>
+                        </div>
+                        <form class="flex flex-col gap-4">
+                            <div class="grid grid-cols-2 gap-[30px]">
+                                <select
+                                    class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 border-[#E5E7EB]"
+                                    name=""
+                                    id="customerType"
+                                >
+                                    <option value>Chọn Loại Khách Hàng</option>
+                                    <option value="residential">Nhà Dân</option>
+                                    <option value="business">
+                                        Doanh Nghiệp
+                                    </option>
+                                </select>
+                                <input
+                                    type="text"
+                                    placeholder="Nhập Mã Khách Hàng"
+                                    class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 border-[#E5E7EB]"
+                                    id="customerCode"
+                                />
+                                <input
+                                    type="number"
+                                    placeholder="Số Kết Nối"
+                                    class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 border-[#E5E7EB] hidden"
+                                    id="connectionsInput"
+                                />
+                                <input
+                                    type="number"
+                                    placeholder="Số Kênh Cao Cấp"
+                                    class="border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 border-[#E5E7EB]"
+                                    id="premiumChannels"
+                                />
+                            </div>
+                            <button
+                                type="button"
+                                class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700"
+                                id="btnNet"
+                            >
+                                Tính
+                            </button>
+                        </form>
+                        <div
+                            class="p-4 mt-4 text-sm rounded-lg bg-green-100 flex items-center gap-[5px] border-green-200 border"
+                            alert
+                            role="alert"
+                        >
+                            <span class="mb-1">👉</span>
+                            <span class="font-bold" id="txtNet"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Js -->
+        <script type="module" src="./js/main.js"></script>
+
+        <!-- flowbite -->
+        <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+
+        <!-- Icon -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+            integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+    </body>
+</html>
